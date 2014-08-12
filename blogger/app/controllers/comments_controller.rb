@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
 		@comment.save
 
-		redirect_to article_path(@comment.article.id)		
+		redirect_to article_path(@comment.article_id)		
 	end
 
 	private
