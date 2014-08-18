@@ -42,13 +42,13 @@ class MicroBlogger
 			puts "Trying to send #{target} this direct message"
 			puts message
 			message = "d @#{target} #{message}"
-			tweet(message)
+			tweet(message) # Call tweet meethod above.
 		else
 			puts "ERROR! You can do DM to only followers"
 		end
 	end
 
-	def followers_list
+	def followers_list # It returns an array, @screen_names.
 		@screen_names = []
 		@client.followers.users.each do |follower|
 			@screen_names << follower["screen_name"]
