@@ -29,6 +29,7 @@ class MicroBlogger
 				when "t" then tweet(parts[1..-1].join(" "))
 				when "dm" then dm(parts[1], parts[2..-1].join(" "))
 				when "spam" then spam_my_follwers(parts[1..-1].join(" "))
+				when "elt" then everyones_last_tweet
 				else
 					puts "Sorry. I don't know how to #{command}"
 				end 
@@ -61,8 +62,22 @@ class MicroBlogger
 		end
 	end
 
+	def everyone_last_tweet
+		friends = @client.friends
+		friends.each do |friend|
+			print friend.screen_name
+			print friend.last_message
+			puts ""  # Just print a blank line to seperate people
+		end
+	end
+
 end
 
 blogger = MicroBlogger.new
 # blogger.tweet("MicroBlogger Initialized")
 blogger.run
+
+
+
+
+
