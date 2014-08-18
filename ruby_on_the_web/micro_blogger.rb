@@ -8,14 +8,6 @@ class MicroBlogger
 		@client = JumpstartAuth.twitter
 	end
 
-	def tweet(message)
-		if message.length <= 140
-			@client.update(message)
-		else
-			puts "ERROR! Twitter messages are limited to 140 characters."
-		end
-	end
-
 	def run
 		puts ">> Welcome to the JSL Twitter Client!"
 		command = "" # Define an variable a string type.
@@ -34,6 +26,14 @@ class MicroBlogger
 					puts "Sorry. I don't know how to #{command}"
 				end 
 		end	
+	end
+
+	def tweet(message)
+		if message.length <= 140
+			@client.update(message)
+		else
+			puts "ERROR! Twitter messages are limited to 140 characters."
+		end
 	end
 
 	def dm(target, message) # Direct message
