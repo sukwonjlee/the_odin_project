@@ -1,5 +1,20 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
+
+<h3>Post a Comment</h3>
+
+<%= render partial: "comments/form" %>
+
 <%= link_to "<< Back to Articles List", articles_path %> <br>
 <%= link_to "Delete", article_path(@article.id), method: :delete, data: {confirm: "Really delete the article?"} %> <br>
 <%= link_to "Edit", edit_article_path(@article.id) %>
+
+<h3>Comments (<%= @article.comments.all.size %>)</h3>
+
+<!-- <% @article.comments.each do |comment| %>
+	<h4>Comment by <%= comment.author_name %></h4>
+	<p class="comment"><%= comment.body %></p>
+<% end %> -->
+
+<%= render partial: "articles/comment", collection: @article.comments %>
+
